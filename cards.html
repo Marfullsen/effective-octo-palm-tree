@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Partidas Públicas - Warriors</title>
-		<link rel="icon" href="img/favicon.ico">
-		<!-- CSS FILES -->
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
 		<link rel="stylesheet" type="text/css" href="css/cards.css">
+		<title>Partidas Públicas - Warriors</title>
 		<style>
 			body {
 				background-color: darkslategray;
@@ -86,57 +86,27 @@
 					</div>
 					<div class="uk-width-auto">
 						<ul class="uk-subnav" data-uk-margin>
-							<li class="uk-visible@s"><a href="#">Inicio</a></li>
-							<li class="uk-visible@s"><a href="#">Mi cuenta</a></li>
-							<li class="uk-visible@s">
-								<a href="#" data-uk-icon="icon:comments"></a>
-								<div class="drop-nav drop-comments uk-dropdown" data-uk-dropdown="mode: click; offset: 20;animation: uk-animation-slide-bottom-small; duration: 150">
-									<ul class="uk-child-width-expand" data-uk-tab="animation: uk-animation-fade">
-										<li><a href="#">Your Messages</a></li>
-										<li><a href="#">Activity</a></li>
-									</ul>
-									<ul class="uk-switcher uk-margin">
-										<li class="uk-height-small uk-overflow-auto">
-											<div class="message">
-												Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id est laborum...<a href="" class="uk-link">VIEW MESSAGE</a>
-											</div>
-											<div class="message">
-												Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id est laborum...<a href="" class="uk-link">VIEW MESSAGE</a>
-											</div>
-											<div class="message">
-												Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id est laborum...<a href="" class="uk-link">VIEW MESSAGE</a>
-											</div>
-											<div class="message">
-												Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id est laborum...<a href="" class="uk-link">VIEW MESSAGE</a>
-											</div>
-										</li>
-										<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-									</ul>
+							<li class="uk-visible@l"><a href="#" uk-toggle="target: #modal-subir-partida">Subir partida</a></li>
+							<!-- This is the modal -->
+							<div id="modal-subir-partida" uk-modal>
+								<div class="uk-modal-dialog uk-modal-body">
+										<h2 class="uk-modal-title">Subir mi partida</h2>
+										<p>¡Las partidas deben subirse comprimidas!</p>
+										<details>
+											<summary>
+												Ver pasos
+											</summary>
+											<p>Paso 1:</p>
+										</details>
+										<form method="post" enctype="multipart/form-data">
+											<input type="hidden" name="csrfmiddlewaretoken" value="qAIjFOPahKx4rCh9VaiCICOJhxcmO2TDwBmWStip8PEgXTxbBKZyKLuUAKirmImt">
+											<p><label for="id_upload_file">Upload file:</label> <input type="file" name="upload_file" required="" id="id_upload_file"></p>
+											<button class="uk-button uk-button-primary" type="submit">Buscar mi partida y subirla</button>
+										</form>
 								</div>
-							</li>
-							<li class="uk-visible@s">
-								<a href="#" data-uk-icon="icon:more"></a>
-								<div class="drop-nav uk-dropdown" data-uk-dropdown="mode: click; offset: 20;animation: uk-animation-slide-bottom-small; duration: 150">
-									<h4 class="uk-margin-small-bottom uk-margin-remove-adjacent">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-									<p class="uk-text-small uk-text-muted">Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-									<hr>
-									<a href="#" class="uk-button uk-button-primary uk-width-1-1">UPDATE YOUR ACCOUNT</a>
-									<hr>
-									<ul class="uk-nav-default uk-nav-parent-icon" data-uk-nav>
-										<li class="uk-nav-header">Header</li>
-										<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: table"></span> Item</a></li>
-										<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: thumbnails"></span> Item</a></li>
-										<li class="uk-nav-divider"></li>
-										<li><a href="#"><span class="uk-margin-small-right" data-uk-icon="icon: trash"></span> Item</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="uk-hidden@s"><a data-uk-navbar-toggle-icon data-uk-toggle href="#offcanvas-nav"></a></li>
+							</div>
+							<li class="uk-visible"><a href="#" data-uk-tooltip="title: Modo nocturno" >🌙</a></li>
+							<li class="uk-hidden"><a href="#" data-uk-tooltip="title: Modo diurno" >☀️</a></li>
 						</ul>
 					</div>
 				</div>
@@ -237,18 +207,27 @@
 										PoV: Maestro
 									</div>
 									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Jugadores" class="uk-inline" data-uk-icon="icon:users; ratio: 0.8"></a>
-										<div uk-drop="mode: click">
-											<div class="uk-card uk-card-body uk-card-default"><p>Equipo 1
-												<br>2- (WARRIORS)CoMemory: Japoneses (Red)
-												<br>3- (WaRRiOrS)_Frem_: Mongoles (Green)
-												<br>4- (WARRIORS) Mati45574: Turcos (Teal)
-											</p>
-											<p>Equipo 2
-												<br>1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)
-												<br>5- Pirata77: Chinos (Purple)
-												<br>6- (WARRIORS)Slow: Godos (Gray)
-											</p></div>
+
+										<a href="#" uk-toggle="target: #modal-jugadores" data-uk-tooltip="title: Ver jugadores" class="uk-inline" data-uk-icon="icon:users; ratio: 0.8"></a>
+										<div id="modal-jugadores" uk-modal>
+											<div class="uk-modal-dialog uk-modal-body">
+													<h2 class="uk-modal-title uk-text-center">Judarores</h2>
+													<h3>Equipo 1</h3>
+													<p>
+														2- (WARRIORS)CoMemory: Japoneses (Red)<br>
+														3- (WaRRiOrS)_Frem_: Mongoles (Green)<br>
+														4- (WARRIORS) Mati45574: Turcos (Teal)
+													</p>
+													<h3>Equipo 2</h3>
+													<p>
+														1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)<br>
+														5- Pirata77: Chinos (Purple)<br>
+														6- (WARRIORS)Slow: Godos (Gray)
+													</p>
+													<p class="uk-text-center">
+														<button class="uk-button uk-modal-close uk-button-primary" type="button">Continuar	</button>
+													</p>
+											</div>
 										</div>
 									</div>
 									<div class="uk-width-auto uk-text-right">
@@ -262,6 +241,7 @@
 						</div>
 					</div>
 					<!-- /card -->
+
 					<!-- card -->
 					<div class="music-card" data-tags="Báltico baltico copa warrios">
 						<div class="uk-card uk-card-small uk-card-default">
@@ -1030,30 +1010,6 @@
 		</section>
 		<!--/CARDS WRAPPER-->
 		
-		<!-- OFFCANVAS -->
-		<div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
-			<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
-				<button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
-				<ul class="uk-nav uk-nav-default">
-					<li class="uk-active"><a href="#">Active</a></li>
-					<li class="uk-parent">
-						<a href="#">Parent</a>
-						<ul class="uk-nav-sub">
-							<li><a href="#">Sub item</a></li>
-							<li><a href="#">Sub item</a></li>
-						</ul>
-					</li>
-					<li class="uk-nav-header">Header</li>
-					<li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
-					<li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
-					<li class="uk-nav-divider"></li>
-					<li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
-				</ul>
-				<h3>Title</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</div>
-		<!-- /OFFCANVAS -->
 		
 		<!-- JS FILES -->
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
