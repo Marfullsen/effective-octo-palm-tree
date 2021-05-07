@@ -57,15 +57,27 @@
 	border-radius: 3px; 
 }
 
-.nature-card .uk-card .cat-txt {
+/* Colores de las cartas */
+/* {'Blue':'Azul', 'Red':'Rojo', 'Green':'Verde', 'Yellow':'Amarillo', 'Teal':'Celeste', 'Purple':'Morado', 'Gray':'Gris', 'Orange':'Naranja'} */
+/*.nature-card .uk-card .cat-txt {*/
+	.blue-card .uk-card {
+		border-top-color: #1E87F0;
+	}
+
+.blue-card .uk-card .cat-txt {
 	color: #1E87F0;
 }
-.music-card .uk-card {
-	border-top-color: #8630F0;
+
+/* .music-card .uk-card { */
+.red-card .uk-card {
+	border-top-color: red;
 }
-.music-card .uk-card .cat-txt {
-	color: #8630F0;
+
+/*.music-card .uk-card .cat-txt {*/
+.red-card .uk-card .cat-txt {
+	color: red;
 }
+
 .design-card .uk-card {
 	border-top-color: #E84DF0;
 }
