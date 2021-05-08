@@ -58,24 +58,64 @@
 }
 
 /* Colores de las cartas */
-/* {'Blue':'Azul', 'Red':'Rojo', 'Green':'Verde', 'Yellow':'Amarillo', 'Teal':'Celeste', 'Purple':'Morado', 'Gray':'Gris', 'Orange':'Naranja'} */
+/* {'Blue':'Azul', 
+	'Red':'Rojo', 
+	'Green':'Verde', 
+	'Yellow':'Amarillo', 
+	'Teal':'Celeste', 
+	'Purple':'Morado', 
+	'Gray':'Gris', 
+	'Orange':'Naranja'} */
 /*.nature-card .uk-card .cat-txt {*/
-	.blue-card .uk-card {
+.blue-card .uk-card {
 		border-top-color: #1E87F0;
 	}
-
 .blue-card .uk-card .cat-txt {
 	color: #1E87F0;
 }
-
 /* .music-card .uk-card { */
 .red-card .uk-card {
 	border-top-color: red;
 }
-
 /*.music-card .uk-card .cat-txt {*/
 .red-card .uk-card .cat-txt {
 	color: red;
+}
+.green-card .uk-card {
+	border-top-color: green;
+}
+.green-card .uk-card .cat-txt {
+color: green;
+}
+.yellow-card .uk-card {
+	border-top-color: yellow;
+}
+.yellow-card .uk-card .cat-txt {
+color: yellow;
+}
+.teal-card .uk-card {
+	border-top-color: cyan;
+}
+.teal-card .uk-card .cat-txt {
+color: cyan;
+}
+.purple-card .uk-card {
+	border-top-color: purple;
+}
+.purple-card .uk-card .cat-txt {
+color: purple;
+}
+.gray-card .uk-card {
+	border-top-color: gray;
+}
+.gray-card .uk-card .cat-txt {
+color: gray;
+}
+.orange-card .uk-card {
+	border-top-color: orangered;
+}
+.orange-card .uk-card .cat-txt {
+color: orangered;
 }
 
 .design-card .uk-card {
@@ -181,5 +221,5 @@ img[data-src][src*='data:image'] { background: rgba(0,0,0,0.1); }
 	color: whitesmoke;
 }
 .uk-active > a {
-	border-bottom: solid blue;
+	border-bottom: solid #999;
 }
