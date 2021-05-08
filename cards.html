@@ -1,77 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
-		<link rel="stylesheet" type="text/css" href="css/cards.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/cards.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 		<title>Partidas Públicas - Warriors</title>
-		<style>
-			body {
-				background-color: darkslategray;
-				background-image: url('img/shley-tree-1.png');
-				min-height: 100vh;
-			}
-
-			.uk-subnav-pill>*>:first-child{
-				color: #ededff;
-			}
-			#site-head {
-				background: transparent;
-			}
-			.uk-notification-message {
-				background-color: #073538;
-			}
-			.uk-card-default {
-				background-color: #003033;
-				background-image: url('img/cartographer.png');
-			}
-			.uk-input {
-				background-color: #003033;
-			}
-			.uk-input:focus {
-				background-color: #053538;
-				color: aliceblue;
-			}
-			.uk-subnav-pill>.uk-active>a {
-				background-color: #053538;
-			}
-
-			/* FLICKER EFFECT */			
-			@keyframes flickerAnimation {
-				100%   { opacity:1; }
-				100%  { opacity: 0.9; }
-			}
-			@-o-keyframes flickerAnimation{
-				100%   { opacity:1; }
-				100%  { opacity: 0.9; }
-			}
-			@-moz-keyframes flickerAnimation{
-				100%   { opacity:1; }
-				100%  { opacity: 0.9; }
-			}
-			@-webkit-keyframes flickerAnimation{
-				100%   { opacity:1; }
-				100%  { opacity: 0.9; }
-			}
-			.animate-flicker {
-				 -webkit-animation: flickerAnimation 2s infinite;
-				 -moz-animation: flickerAnimation 2s infinite;
-				 -o-animation: flickerAnimation 2s infinite;
-					animation: flickerAnimation 2s infinite;
-			}
-		</style>
 	</head>
-	<body data-uk-filter="target: .js-filter; animation: fade">
+	<body class data-uk-filter="target: .js-filter; animation: fade">
 		
 		<!--HEADER-->
 		<header id="site-head">
 			<div class="uk-container uk-container-expand">
 				<div class="uk-grid uk-grid-medium uk-flex uk-flex-middle" data-uk-grid>
 					<div class="uk-width-auto">
-						<a href="https://www.youtube.com/channel/UCGAL8NitnKBW5RIdwy6gqeQ" class="uk-logo" title=""><img class="animate-flicker" src="img/W-neon.png" alt=""></a>
+						<a href="https://www.youtube.com/channel/UCGAL8NitnKBW5RIdwy6gqeQ" class="uk-logo" title="">
+							<img class="animate-flicker" src="assets/img/W-neon.png" alt="">
+						</a>
 					</div>
 					<div class="uk-width-expand">
 						<form id="search-form" action="">
@@ -105,8 +53,7 @@
 										</form>
 								</div>
 							</div>
-							<li class="uk-visible"><a href="#" data-uk-tooltip="title: Modo nocturno" >🌙</a></li>
-							<li class="uk-hidden"><a href="#" data-uk-tooltip="title: Modo diurno" >☀️</a></li>
+							<li class="uk-visible btn-toggle"><a href="#" data-uk-tooltip="title: Cambiar iluminación" >🌙/☀️</a></li>
 						</ul>
 					</div>
 				</div>
@@ -141,7 +88,7 @@
 							</div>
 							<div class="uk-card-media uk-text-center">
 								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="img/transp.gif">
+									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="assets/img/transp.gif">
 									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
 										<span data-uk-icon="icon:user; ratio: 0.8"></span> Maestro <span data-uk-icon="icon:bolt; ratio: 0.8"></span> Sarracenos
 									</div>
@@ -192,7 +139,10 @@
 													<br>4- (WARRIORS) Mati45574: Turcos (Teal)
 												</p>
 												<hr>
-												<p>Equipo 2
+												<p>
+													<span class="uk-text-bold">
+														Equipo 2
+													</span>
 													<br>1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)
 													<br>5- Pirata77: Chinos (Purple)
 													<br>6- (WARRIORS)Slow: Godos (Gray)
@@ -225,16 +175,44 @@
 														6- (WARRIORS)Slow: Godos (Gray)
 													</p>
 													<p class="uk-text-center">
-														<button class="uk-button uk-modal-close uk-button-primary" type="button">Continuar	</button>
+														<button class="uk-button uk-modal-close uk-button-primary" type="button">Continuar</button>
 													</p>
 											</div>
 										</div>
 									</div>
 									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Sobre la partida" class="uk-icon-link" data-uk-icon="icon:info; ratio: 0.8"></a>
+										<a href="#" data-uk-tooltip="title: Sobre la partida" uk-toggle="target: #modal-about" class="uk-icon-link" data-uk-icon="icon:info; ratio: 0.8"></a>
+
+										<!-- MODAL con TODA LA INFORMACIÓN -->
+										<div id="modal-about" uk-modal>
+												<div class="uk-modal-dialog uk-modal-body">
+														<h2 class="uk-modal-title">Sobre la partida</h2>
+														<p>
+															Toda la información rescatada de la partida grabada.
+															Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+														</p>
+														<p class="uk-text-center">
+																<button class="uk-button uk-modal-close uk-button-primary" type="button">¡Okay!</button>
+														</p>
+												</div>
+										</div>
 									</div>
 									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Descargar partida" href="#" class="uk-icon-link" data-uk-icon="icon:download; ratio: 1"></a>
+										<a data-uk-tooltip="title: Descargar partida" href="#" uk-toggle="target: #modal-download" class="uk-icon-link" data-uk-icon="icon:download; ratio: 1"></a>
+										<div id="modal-download" uk-modal>
+											<div class="uk-modal-dialog uk-modal-body">
+													<h2 class="uk-modal-title">¡Descargando partida!</h2>
+													<p>
+														Se está descargando la partida "blablabla.mgz"
+														<br><br>
+														Para abrir la partida, guardar el archivo descargado en la carpeta <strong>SaveGame</strong>
+													</p>
+													
+													<p class="uk-text-center">
+															<button class="uk-button uk-modal-close uk-button-primary" type="button">¡Okay!</button>
+													</p>
+											</div>
+									</div>
 									</div>
 								</div>
 							</div>
@@ -257,7 +235,7 @@
 							</div>
 							<div class="uk-card-media uk-text-center">
 								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="img/transp.gif">
+									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="img/transp.gif">
 									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
 										<span data-uk-icon="icon:user; ratio: 0.8"></span> Maestro <span data-uk-icon="icon:bolt; ratio: 0.8"></span> Sarracenos
 									</div>
@@ -373,7 +351,7 @@
 							</div>
 							<div class="uk-card-media">
 								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="470" data-uk-img alt="" src="img/transp.gif">
+									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="470" data-uk-img alt="" src="assets/img/transp.gif">
 									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
 										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
 									</div>
@@ -417,7 +395,7 @@
 							</div>
 							<div class="uk-card-media">
 								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="400" data-uk-img alt="" src="img/transp.gif">
+									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="400" data-uk-img alt="" src="img/transp.gif">
 									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
 										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
 									</div>
@@ -1130,11 +1108,12 @@
 		<!-- JS FILES -->
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
-		<script src="js/cards.js"></script>	
+		<script src="assets/js/cards.js"></script>
+		<script src="assets/js/script.js"></script>	
 		<script>
-			setTimeout(function(){
+			/*setTimeout(function(){
 				UIkit.notification('¡Ahora el clan Warriors tiene página!<br>¡Puedes buscar las partidas grabadas y repetirlas las veces que quieras!');
-			}, 1000);
+			}, 1000);*/
 		</script>	
 	</body>
 </html>

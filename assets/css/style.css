@@ -1,0 +1,79 @@
+body {
+  background-color: darkslategray;
+  background-image: url('../img/shley-tree-1.png');
+  min-height: 100vh;
+} 
+body.light-theme {
+  color: #000;
+  background: #fff;
+  background-image: url('../img/dimension.png');
+}
+body.light-theme .uk-text-muted, body.light-theme .uk-subnav-pill>*>:first-child {
+  color: #000!important;
+}
+body.light-theme #site-head {
+  background: #fff;
+  background-image: repeating-linear-gradient(-180deg, lightgray, transparent 100px);
+}
+body.light-theme .uk-input{
+  color: #000;
+  background: #fff;
+}
+body.light-theme .uk-card-default {
+  background: #fff;
+}
+body.light-theme .uk-subnav-pill>.uk-active>a {
+  color: white!important;
+  background-color: #1E87F0;
+}
+body.light-theme .uk-subnav-pill {
+  color: #000;
+}
+
+.uk-subnav-pill>*>:first-child{
+  color: #ededff;
+}
+#site-head {
+  background: transparent;
+}
+.uk-notification-message {
+  background-color: #073538;
+}
+.uk-card-default {
+  background-color: #003033;
+  background-image: url('../img/cartographer.png');
+}
+.uk-input {
+  background-color: #003033;
+}
+.uk-input:focus {
+  background-color: #053538;
+  color: aliceblue;
+}
+.uk-subnav-pill>.uk-active>a {
+  background-color: #053538;
+}
+
+/* FLICKER EFFECT */			
+@keyframes flickerAnimation {
+  100%   { opacity:1; }
+  100%  { opacity: 0.9; }
+}
+@-o-keyframes flickerAnimation{
+  100%   { opacity:1; }
+  100%  { opacity: 0.9; }
+}
+@-moz-keyframes flickerAnimation{
+  100%   { opacity:1; }
+  100%  { opacity: 0.9; }
+}
+@-webkit-keyframes flickerAnimation{
+  100%   { opacity:1; }
+  100%  { opacity: 0.9; }
+}
+.animate-flicker {
+    -webkit-animation: flickerAnimation 2s infinite;
+    -moz-animation: flickerAnimation 2s infinite;
+    -o-animation: flickerAnimation 2s infinite;
+    animation: flickerAnimation 2s infinite;
+}
