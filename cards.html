@@ -75,7 +75,7 @@
 				<div id="app" class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l  uk-child-width-1-5@xl uk-grid-match js-filter" data-uk-grid="masonry: true" data-uk-sortable="handle: .drag-icon">
 					
 					<!-- card -->
-					<div class="blue-card" data-tags="baltico copa warriors maestro">
+					<div v-for="partida in partidas" class="blue-card" data-tags="baltico copa warriors maestro">
 						<div class="uk-card uk-card-small uk-card-default">
 							<div class="uk-card-header">
 								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
@@ -91,7 +91,7 @@
 								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
 									<img class="lazy" data-src="assets/img/minimap_recorded game -  06-mar-2021 04`17`02.png" data-width="400" data-height="300" data-uk-img alt="" src="assets/img/transp.gif">
 									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:user; ratio: 0.8"></span> {{ partidas['1'].punto_de_vista }} <span data-uk-icon="icon:bolt; ratio: 0.8"></span> {{ partidas['1'].teams }}
+										<span data-uk-icon="icon:user; ratio: 0.8"></span> {{ partida.punto_de_vista }} <span data-uk-icon="icon:bolt; ratio: 0.8"></span> {{ partidas['1'].teams }}
 									</div>
 								</div>
 							</div>
@@ -105,52 +105,47 @@
 									
 									<ul class="uk-switcher uk-margin">
 											<li class="uk-text-small uk-text-muted">
-												<p>Mapa: {{ partidas[1].nombre_mapa }}<br>Subida por: Frem</p>
+												<p>Mapa: {{ partida.nombre_mapa }}<br>Subida por: Frem</p>
 											</li>
 											<li class="uk-text-small uk-text-muted">
-												<p>Nombre archivo<br> {{ partidas[1].nombre_archivo }}</p>
+												<p>Nombre archivo<br> {{ partida.nombre_archivo }}</p>
 												<hr>
 												<p>
-													Duracion partida: {{ partidas[1].duracion_partida }} <br>
-													Punto de vista: {{ partidas[1].punto_de_vista }}
+													Duracion partida: {{ partida.duracion_partida }} <br>
+													Punto de vista: {{ partida.punto_de_vista }}
 												</p>
 												<hr>
 												<p>
-													Mapa_revelado: {{ partidas[1].mapa_revelado }}<br>
-													Velocidad: {{ partidas[1].velocidad }}<br>
-													Poblacion: {{ partidas[1].poblacion }}<br>
-													Diplomacia: {{ partidas[1].diplomacia }}</p>
+													Mapa_revelado: {{ partida.mapa_revelado }}<br>
+													Velocidad: {{ partida.velocidad }}<br>
+													Poblacion: {{ partida.poblacion }}<br>
+													Diplomacia: {{ partida.diplomacia }}</p>
 												<hr>
 												<p>
-													Nombre_mapa: {{ partidas[1].nombre_mapa }} <br>
-													Tamano_mapa: {{ partidas[1].tamano_mapa }} <br>
-													Bloqueo_diplomacia_equipos: {{ partidas[1].bloqueo_diplomacia_equipos }} <br>
-													Dificultad: {{ partidas[1].dificultad }} <br>
-													Equipos: {{ partidas[1].teams }}
+													Nombre_mapa: {{ partida.nombre_mapa }} <br>
+													Tamano_mapa: {{ partida.tamano_mapa }} <br>
+													Bloqueo_diplomacia_equipos: {{ partida.bloqueo_diplomacia_equipos }} <br>
+													Dificultad: {{ partida.dificultad }} <br>
+													Equipos: {{ partida.teams }}
 												</p>
 												<hr>
 											</li>
 											<li class="uk-text-small uk-text-muted">
 												<p>
-													<span class="uk-text-bold">
-														Equipo 1
-														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
+													<!-- Info de cada jugador (Nickname & civ) -->
+													<span v-for="(valor, clave) in partida">
+														<span v-if="typeof(valor) === 'object'">
+															<span v-for="(equipos, num_equipo) in valor">
+																<strong>Equipo {{ num_equipo }}</strong><br>
+																<span v-for="(info_jugador, num_jugador) in equipos">
+																	<span v-bind:style="{ 'color': custom_color(info_jugador.color) }">&#9673;</span> <strong>{{ info_jugador.nickname }}</strong><br>
+																	Civi: {{ info_jugador.civ }}<br>
+																</span>
+																<br>
+															</span>
+															<br>
+														</span>
 													</span>
-													<br><span style="color: red;">&#9673;</span> 2- (WARRIORS)CoMemory: Japoneses 
-													<br><span style="color: lime;">&#9673;</span> 3- (WaRRiOrS)_Frem_: Mongoles 
-													<br><span style="color: cyan;">&#9673;</span> 4- (WARRIORS) Mati45574: Turcos 
-												</p>
-												<hr>
-												<p>
-													<span class="uk-text-bold">
-														Equipo 2
-														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
-														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
-														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
-													</span>
-													<br><span style="color: blue;">&#9673;</span> 1- (WArrioRs)_MAEsTro_: Sarracenos 
-													<br><span style="color: purple;">&#9673;</span> 5- Pirata77: Chinos 
-													<br><span style="color: gray;">&#9673;</span> 6- (WARRIORS)Slow: Godos 
 												</p>
 											</li>
 									</ul>
@@ -159,7 +154,7 @@
 							<div class="uk-card-footer">
 								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
 									<div class="uk-width-expand uk-text-small">
-										PoV: {{ partidas[1].punto_de_vista }}
+										PoV: {{ partida.punto_de_vista }}
 									</div>
 									<div class="uk-width-auto uk-text-right">
 
@@ -167,45 +162,26 @@
 										<div id="modal-jugadores1" uk-modal>
 											<div class="uk-modal-dialog uk-modal-body">
 													<h2 class="uk-modal-title uk-text-center">Judarores</h2>
-													<h3>Equipo 1</h3>
-													TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
-													<!-- Primer jugador del equipo 1 -->
-													<article style="display:flex;align-items:center;">
-														<img src="assets/img/civs/1/5.png" alt="red-japanese" class="uk-flex" style="height: 36px;">
-														<div style="height: 40px;padding: 10px;">
-															<h5 class="uk-margin-remove">2- (WARRIORS)CoMemory</h5>
-															<h6 style="margin: 0;text-align: end;"><span style="color: red;">&#9673;</span> Japoneses</h6><br>
-														</div>
-													</article>
+													<span v-for="(valor, clave) in partida">
+														<span v-if="typeof(valor) === 'object'">
+															<span v-for="(equipos, num_equipo) in valor">
+																<h3 style="margin: 0;">Equipo {{ num_equipo }}</h3>
+																<span v-for="(info_jugador, num_jugador) in equipos">
 
-													<!-- Segundo jugador del equipo 1 -->
-													<article style="display:flex;align-items:center;">
-														<img src="assets/img/civs/2/12.png" alt="green-mongols" class="uk-flex" style="height: 36px;">
-														<div style="height: 40px;padding: 10px;">
-															<h5 class="uk-margin-remove">	3- (WaRRiOrS)_Frem_</h5>
-															<h6 style="margin: 0;text-align: end;"><span style="color: lime;">&#9673;</span> Mongoles</h6><br>
-														</div>
-													</article>
+																	<article style="display:flex;align-items:center;">
+																		<img :src="'assets/img/civs/' + info_jugador.color_cod + '/' + info_jugador.civ_cod + '.png'" v-bind:alt="[spanish(info_jugador.color)+'-'+info_jugador.civ]" class="uk-flex" style="height: 36px;">
+																		<div style="height: 40px;padding: 10px;">
+																			<h4 class="uk-margin-remove">{{ info_jugador.nickname }}</h4>
+																			<h5 style="margin: 0;"><span v-bind:style="{ 'color': custom_color(info_jugador.color) }">&#9673;</span> {{ info_jugador.civ }}</h5><br>
+																		</div>
+																	</article>
 
-													<!-- Tercer jugador del equipo 1 -->
-													<article style="display:flex;align-items:center;">
-														<img src="assets/img/civs/4/9.png" alt="teal-turks" class="uk-flex" style="height: 36px;">
-														<div style="height: 40px;padding: 10px;">
-															<h5 class="uk-margin-remove">4- (WARRIORS) Mati45574</h5>
-															<h6 style="margin: 0;text-align: end;"><span style="color: cyan;">&#9673;</span> Turcos</h6><br>
-														</div>
-													</article>
-													
-													<h3>Equipo 2</h3>
-													<p>
-														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
-														<img src="assets/img/civs/1/9.png" alt="blue-saracens">
-														1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)<br>
-														<img src="assets/img/civs/5/6.png" alt="purple-chinese">
-														5- Pirata77: Chinos (Purple)<br>
-														<img src="assets/img/civs/7/3.png" alt="gray-goths">
-														6- (WARRIORS)Slow: Godos (Gray)
-													</p>
+																</span>
+																<br>
+															</span>
+															<br>
+														</span>
+													</span>
 													<p class="uk-text-center">
 														<button class="uk-button uk-modal-close uk-button-primary" type="button">Continuar</button>
 													</p>
@@ -220,14 +196,13 @@
 												<div class="uk-modal-dialog uk-modal-body">
 														<h2 class="uk-modal-title">Sobre la partida</h2>
 														<h3>Toda la información rescatada de la partida grabada.</h3>
-														<span v-for="(valor, clave) in partidas[1]">
+														<span v-for="(valor, clave) in partida">
 															<span v-if="typeof(valor) === 'object'">
 																<span v-for="(equipos, num_equipo) in valor">
 																	<strong>Equipo {{ num_equipo }}</strong><br>
 																	<span v-for="(info_jugador, num_jugador) in equipos">
-																		<span v-bind:style="{ 'color': info_jugador.color }">&#9673;</span>- <strong>{{ info_jugador.nickname }}</strong><br>
+																		<span v-bind:style="{ 'color': custom_color(info_jugador.color) }">&#9673;</span> <strong>{{ info_jugador.nickname }}</strong><br>
 																		Civilización: {{ info_jugador.civ }}<br>
-																		<!-- <span v-for="(dato, etiqueta) in info_jugador"> {{ etiqueta }}: {{ dato }}<br> </span> -->
 																	</span>
 																	<br>
 																</span>
@@ -249,7 +224,7 @@
 											<div class="uk-modal-dialog uk-modal-body">
 													<h2 class="uk-modal-title">¡Descargando partida!</h2>
 													<p>
-														Se está descargando la partida <strong>"{{ partidas[1].nombre_archivo }}"</strong>
+														Se está descargando la partida <strong>"{{ partida.nombre_archivo }}"</strong>
 														<br><br>
 														Para abrir la partida, guardar el archivo descargado en la carpeta <strong>SaveGame</strong>
 													</p>
@@ -351,16 +326,93 @@
 								'tamano_mapa': 'Grande (8 jug.)',
 								'teams': '4v4',
 								'velocidad': 'Rápida'
+							},
+							2: {
+								'bloqueo_diplomacia_equipos': 'Bloqueado',
+								'dificultad': 'Muy fácil',
+								'diplomacia': 'Batalla de equipos',
+								'duracion_partida': '00:49:09',
+								'equipos': {
+									1: {
+										1: {
+											'civ': 'Persas',
+											'civ_cod': '8',
+											'color': 'Blue',
+											'color_cod': '0',
+											'nickname': '(WARRIORS) Frank',
+											'victoria': 0},
+										2: {'civ': 'Japoneses',
+											'civ_cod': '5',
+											'color': 'Red',
+											'color_cod': '1',
+											'nickname': '(WARRIORS) _MaesTro_De_MaEsTros',
+											'victoria': 0},
+										3: {'civ': 'Celtas',
+											'civ_cod': '13',
+											'color': 'Green',
+											'color_cod': '2',
+											'nickname': '(WaRRiORs)_AmigoFremer',
+											'victoria': 0},
+										4: {'civ': 'Vikingos',
+											'civ_cod': '11',
+											'color': 'Yellow',
+											'color_cod': '3',
+											'nickname': '(WARRIORS)Flame A',
+											'victoria': 0}},
+									2: {
+										5: {'civ': 'Francos',
+											'civ_cod': '2',
+											'color': 'Teal',
+											'color_cod': '4',
+											'nickname': 'Pro with new account',
+											'victoria': 1},
+										6: {'civ': 'Mayas',
+											'civ_cod': '16',
+											'color': 'Purple',
+											'color_cod': '5',
+											'nickname': 'I AM INDO',
+											'victoria': 1},
+										7: {'civ': 'Ingleses',
+											'civ_cod': '1',
+											'color': 'Gray',
+											'color_cod': '6',
+											'nickname': 'Hector',
+											'victoria': 1},
+										8: {'civ': 'Chinos',
+											'civ_cod': '6',
+											'color': 'Orange',
+											'color_cod': '7',
+											'nickname': 'Hiraishin\x99',
+											'victoria': 1
+										}
+									}
+								},
+								'mapa_revelado': 'Normal',
+								'nombre_archivo': 'recorded game -  06-mar-2021 04`17`02.mgx',
+								'nombre_mapa': 'Blue Arab',
+								'poblacion': 200,
+								'punto_de_vista': 'Maeestro',
+								'tamano_mapa': 'Grande (8 jug.)',
+								'teams': '4v4',
+								'velocidad': 'Rápida'
 							}
 						}
 					};
 				},
 				mounted() {
-					this.mapa_info();
+					this.traer_partidas();
 				},
 				methods:{
-					mapa_info() {
-						console.log('working!');
+					traer_partidas() {
+						console.log('Recopilando información...')
+					},
+					spanish(color) {
+						spanish_colors = {'Blue':'Azul', 'Red':'Rojo', 'Green':'Verde', 'Yellow':'Amarillo', 'Teal':'Celeste', 'Purple':'Morado', 'Gray':'Gris', 'Orange':'Naranja'}
+						return spanish_colors[color]
+					},
+					custom_color(color){
+						custom_colors = {'Blue':'blue', 'Red':'red', 'Green':'lime', 'Yellow':'yellow', 'Teal':'cyan', 'Purple':'fuchsia', 'Gray':'#E9E9E9', 'Orange':'orange'}
+						return custom_colors[color]
 					}
 				},
 			};
