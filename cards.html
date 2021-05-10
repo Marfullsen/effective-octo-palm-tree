@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/cards.css">
 		<link rel="stylesheet" href="assets/css/style.css">
-		<title>Partidas Públicas - Warriors</title>
+		<title>Vue3 =W=</title>
 	</head>
 	<body class data-uk-filter="target: .js-filter; animation: fade">
 		
@@ -71,7 +71,8 @@
 					<li data-uk-filter-control=".photo-card"><a href="#">Chascarros</a></li>
 					<li data-uk-filter-control=".design-card"><a href="#">Finales</a></li>
 				</ul>
-				<div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l  uk-child-width-1-5@xl uk-grid-match js-filter" data-uk-grid="masonry: true" data-uk-sortable="handle: .drag-icon">
+
+				<div id="app" class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l  uk-child-width-1-5@xl uk-grid-match js-filter" data-uk-grid="masonry: true" data-uk-sortable="handle: .drag-icon">
 					
 					<!-- card -->
 					<div class="blue-card" data-tags="baltico copa warriors maestro">
@@ -88,9 +89,9 @@
 							</div>
 							<div class="uk-card-media uk-text-center">
 								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="assets/img/transp.gif">
+									<img class="lazy" data-src="assets/img/minimap_recorded game -  06-mar-2021 04`17`02.png" data-width="400" data-height="300" data-uk-img alt="" src="assets/img/transp.gif">
 									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:user; ratio: 0.8"></span> Maestro <span data-uk-icon="icon:bolt; ratio: 0.8"></span> Sarracenos
+										<span data-uk-icon="icon:user; ratio: 0.8"></span> {{ partidas['1'].punto_de_vista }} <span data-uk-icon="icon:bolt; ratio: 0.8"></span> {{ partidas['1'].teams }}
 									</div>
 								</div>
 							</div>
@@ -104,28 +105,28 @@
 									
 									<ul class="uk-switcher uk-margin">
 											<li class="uk-text-small uk-text-muted">
-												<p>Mapa: Báltico<br>Subida por: Frem</p>
+												<p>Mapa: {{ partidas[1].nombre_mapa }}<br>Subida por: Frem</p>
 											</li>
 											<li class="uk-text-small uk-text-muted">
-												<p>Nombre archivo<br> recgame-warriors-2021.mgx</p>
+												<p>Nombre archivo<br> {{ partidas[1].nombre_archivo }}</p>
 												<hr>
 												<p>
-													Duracion partida: 01:03:06 <br>
-													Punto de vista: (WaRRiOrS)_Frem_
+													Duracion partida: {{ partidas[1].duracion_partida }} <br>
+													Punto de vista: {{ partidas[1].punto_de_vista }}
 												</p>
 												<hr>
 												<p>
-													Mapa_revelado: Normal<br>
-													Velocidad: Rápida<br>
-													Poblacion: 200<br>
-													Diplomacia: Batalla de equipos</p>
+													Mapa_revelado: {{ partidas[1].mapa_revelado }}<br>
+													Velocidad: {{ partidas[1].velocidad }}<br>
+													Poblacion: {{ partidas[1].poblacion }}<br>
+													Diplomacia: {{ partidas[1].diplomacia }}</p>
 												<hr>
 												<p>
-													Nombre_mapa: Báltico <br>
-													Tamano_mapa: Normal (6 jug.) <br>
-													Bloqueo_diplomacia_equipos: Bloqueado <br>
-													Dificultad: Máxima <br>
-													Equipos: 3v3
+													Nombre_mapa: {{ partidas[1].nombre_mapa }} <br>
+													Tamano_mapa: {{ partidas[1].tamano_mapa }} <br>
+													Bloqueo_diplomacia_equipos: {{ partidas[1].bloqueo_diplomacia_equipos }} <br>
+													Dificultad: {{ partidas[1].dificultad }} <br>
+													Equipos: {{ partidas[1].teams }}
 												</p>
 												<hr>
 											</li>
@@ -133,6 +134,7 @@
 												<p>
 													<span class="uk-text-bold">
 														Equipo 1
+														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
 													</span>
 													<br><span style="color: red;">&#9673;</span> 2- (WARRIORS)CoMemory: Japoneses 
 													<br><span style="color: lime;">&#9673;</span> 3- (WaRRiOrS)_Frem_: Mongoles 
@@ -142,6 +144,9 @@
 												<p>
 													<span class="uk-text-bold">
 														Equipo 2
+														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
+														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
+														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
 													</span>
 													<br><span style="color: blue;">&#9673;</span> 1- (WArrioRs)_MAEsTro_: Sarracenos 
 													<br><span style="color: purple;">&#9673;</span> 5- Pirata77: Chinos 
@@ -154,7 +159,7 @@
 							<div class="uk-card-footer">
 								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
 									<div class="uk-width-expand uk-text-small">
-										PoV: Maestro
+										PoV: {{ partidas[1].punto_de_vista }}
 									</div>
 									<div class="uk-width-auto uk-text-right">
 
@@ -163,7 +168,7 @@
 											<div class="uk-modal-dialog uk-modal-body">
 													<h2 class="uk-modal-title uk-text-center">Judarores</h2>
 													<h3>Equipo 1</h3>
-
+													TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
 													<!-- Primer jugador del equipo 1 -->
 													<article style="display:flex;align-items:center;">
 														<img src="assets/img/civs/1/5.png" alt="red-japanese" class="uk-flex" style="height: 36px;">
@@ -193,6 +198,7 @@
 													
 													<h3>Equipo 2</h3>
 													<p>
+														TODO / POR HACER / AUN INCOMPLETO / SIN CÓDIGO VUE3
 														<img src="assets/img/civs/1/9.png" alt="blue-saracens">
 														1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)<br>
 														<img src="assets/img/civs/5/6.png" alt="purple-chinese">
@@ -213,10 +219,24 @@
 										<div id="modal-about1" uk-modal>
 												<div class="uk-modal-dialog uk-modal-body">
 														<h2 class="uk-modal-title">Sobre la partida</h2>
-														<p>
-															Toda la información rescatada de la partida grabada.
-															Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-														</p>
+														<h3>Toda la información rescatada de la partida grabada.</h3>
+														<span v-for="(valor, clave) in partidas[1]">
+															<span v-if="typeof(valor) === 'object'">
+																<span v-for="(equipos, num_equipo) in valor">
+																	<strong>Equipo {{ num_equipo }}</strong><br>
+																	<span v-for="(info_jugador, num_jugador) in equipos">
+																		<span v-bind:style="{ 'color': info_jugador.color }">&#9673;</span>- <strong>{{ info_jugador.nickname }}</strong><br>
+																		Civilización: {{ info_jugador.civ }}<br>
+																		<!-- <span v-for="(dato, etiqueta) in info_jugador"> {{ etiqueta }}: {{ dato }}<br> </span> -->
+																	</span>
+																	<br>
+																</span>
+																<br>
+															</span>
+															<span v-else>
+																{{ clave }}: {{ valor }}<br>
+															</span>
+														</span>
 														<p class="uk-text-center">
 																<button class="uk-button uk-modal-close uk-button-primary" type="button">¡Okay!</button>
 														</p>
@@ -229,7 +249,7 @@
 											<div class="uk-modal-dialog uk-modal-body">
 													<h2 class="uk-modal-title">¡Descargando partida!</h2>
 													<p>
-														Se está descargando la partida "blablabla.mgz"
+														Se está descargando la partida <strong>"{{ partidas[1].nombre_archivo }}"</strong>
 														<br><br>
 														Para abrir la partida, guardar el archivo descargado en la carpeta <strong>SaveGame</strong>
 													</p>
@@ -245,902 +265,106 @@
 						</div>
 					</div>
 					<!-- /card -->
-
-					<!-- card -->
-					<div class="red-card" data-tags="baltico copa warriors maestro">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Copa Warriors / Báltico</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:calendar; ratio: 0.8"></span> 5 Marzo 2021.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media uk-text-center">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:user; ratio: 0.8"></span> Maestro <span data-uk-icon="icon:bolt; ratio: 0.8"></span> Sarracenos
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-body uk-align-center">
-								<div>
-									<ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-scale-up">
-										<li><a href="#">Mapa</a></li>
-										<li><a href="#">Detalles</a></li>
-										<li><a href="#">Equipos</a></li>
-									</ul>
-									
-									<ul class="uk-switcher uk-margin">
-											<li class="uk-text-small uk-text-muted">
-												<p>Mapa: Báltico<br>Subida por: Frem</p>
-											</li>
-											<li class="uk-text-small uk-text-muted">
-												<p>Nombre archivo<br> recgame-warriors-2021.mgx</p>
-												<hr>
-												<p>
-													Duracion partida: 01:03:06 <br>
-													Punto de vista: (WaRRiOrS)_Frem_
-												</p>
-												<hr>
-												<p>
-													Mapa_revelado: Normal<br>
-													Velocidad: Rápida<br>
-													Poblacion: 200<br>
-													Diplomacia: Batalla de equipos</p>
-												<hr>
-												<p>
-													Nombre_mapa: Báltico <br>
-													Tamano_mapa: Normal (6 jug.) <br>
-													Bloqueo_diplomacia_equipos: Bloqueado <br>
-													Dificultad: Máxima <br>
-													Equipos: 3v3
-												</p>
-												<hr>
-											</li>
-											<li class="uk-text-small uk-text-muted">
-												<p>
-													<span class="uk-text-bold">
-														Equipo 1
-													</span>
-													<br>2- (WARRIORS)CoMemory: Japoneses (Red)
-													<br>3- (WaRRiOrS)_Frem_: Mongoles (Green)
-													<br>4- (WARRIORS) Mati45574: Turcos (Teal)
-												</p>
-												<hr>
-												<p>Equipo 2
-													<br>1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)
-													<br>5- Pirata77: Chinos (Purple)
-													<br>6- (WARRIORS)Slow: Godos (Gray)
-												</p>
-											</li>
-									</ul>
-								</div>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										PoV: (WaRRiOrS)_Frem_
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<!-- MODAL CON LA INFORMACIÓN DE LOS JUGADORES -->
-										<a href="#" uk-toggle="target: #modal-jugadores" data-uk-tooltip="title: Ver jugadores" class="uk-inline" data-uk-icon="icon:users; ratio: 0.8"></a>
-										<div id="modal-jugadores" uk-modal>
-											<div class="uk-modal-dialog uk-modal-body">
-													<h2 class="uk-modal-title uk-text-center">Judarores</h2>
-													<h3>Equipo 1</h3>
-													<img src="assets/img/civs/1/5.png" alt="japanese" srcset="">
-													<p>
-														2- (WARRIORS)CoMemory: Japoneses (Red)<br>
-														3- (WaRRiOrS)_Frem_: Mongoles (Green)<br>
-														4- (WARRIORS) Mati45574: Turcos (Teal)
-													</p>
-													<h3>Equipo 2</h3>
-													<p>
-														1- (WArrioRs)_MAEsTro_: Sarracenos (Blue)<br>
-														5- Pirata77: Chinos (Purple)<br>
-														6- (WARRIORS)Slow: Godos (Gray)
-													</p>
-													<p class="uk-text-center">
-														<button class="uk-button uk-modal-close uk-button-primary" type="button">Continuar	</button>
-													</p>
-											</div>
-										</div>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Sobre la partida" class="uk-icon-link" data-uk-icon="icon:info; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Descargar partida" href="#" class="uk-icon-link" data-uk-icon="icon:download; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-
-					<!-- card -->
-					<div class="red-card" data-tags="Báltico baltico copa warrios">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Baltico / Copa Warriors</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 6 min.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="470" data-uk-img alt="" src="assets/img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">AMAZING MUSIC BAND HERE</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="red-card" data-tags="video music awards pictures - music bands">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">MUSIC / BANDS</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 12 min.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="assets/img/minimap.png" data-width="400" data-height="400" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">VIDEO MUSIC AWARDS PICTURES</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="design-card"  data-tags="trends in design world - design">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">DESIGN</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 18 min.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="460" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">TRENDS IN DESIGN WORLD</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="photo-card"  data-tags="amazing pictures - photography">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">PHOTOGRAPHY</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 23 min.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="200" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">AMAZING PICTURES</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="photo-card"  data-tags="amazing nature pictures - photograhy">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">PHOTOGRAPHY</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 46 min.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="360" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">AMAZING LANDSCAPE PICTURES</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="nature-card"  data-tags="wildlife and nature pictures - nature outdoor">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Nature / Outdoor</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 1 hr.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">WILDLIFE AND NATURE PICTURES</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="red-card"  data-tags="amazing new rock band from england - music bands">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">MUSIC / BANDS</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 1 hr.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="470" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">AMAZING NEW ROCK BAND FROM ENGLAND</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="red-card"  data-tags="new album release today - music bands">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">MUSIC / BANDS</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 2 hr.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="400" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">NEW ALBUM RELEASE TODAY</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="photo-card" data-tags="urban picture gallery - photography">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">PHOTOGRAPHY</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 3 hr.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="330" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">URBAN PICTURE GALLERY</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="photo-card" data-tags="portraits - photograhy">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">PHOTOGRAPHY</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 1 day.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="350" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">PORTRAITS</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="design-card" data-tags="how to use space in design - design">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">DESIGN</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 1 day.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="460" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">HOW TO USE SPACE IN DESIGN</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="red-card" data-tags="remastered record from the clash - music bands">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">MUSIC / BANDS</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 1 day.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="200" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">REMASTERED RECORD FROM THE CLASH</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="design-card" data-tags="how to use typography in design - design">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">DESIGN</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 2 days.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="570" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">HOW TO USE TYPOGRAPHY IN DESIGN</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="nature-card" data-tags="wildlife in the uco valley - photograhy outdoor">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Nature / Outdoor</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 2 days.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="300" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">WILDLIFE IN THE UCO VALLEY</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="nature-card" data-tags="on top of the mountains - nature outdoor">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Nature / Outdoor</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 3 days.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="530" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">ON TOP OF THE MOUNTAINS</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="design-card" data-tags="how to create a custom color palette - design">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Design</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 4 days.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="180" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">HOW TO CREATE CUSTOM COLOR PALETTE</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
-					<!-- card -->
-					<div class="nature-card" data-tags="wildcats in thailand - nature outdoor">
-						<div class="uk-card uk-card-small uk-card-default">
-							<div class="uk-card-header">
-								<div class="uk-grid uk-grid-small uk-text-small" data-uk-grid>
-									<div class="uk-width-expand">
-										<span class="cat-txt">Nature / Outdoor</span>
-									</div>
-									<div class="uk-width-auto uk-text-right uk-text-muted">
-										<span data-uk-icon="icon:clock; ratio: 0.8"></span> 1 week.
-									</div>
-								</div>
-							</div>
-							<div class="uk-card-media">
-								<div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-									<img class="lazy" data-src="img/minimap.png" data-width="400" data-height="220" data-uk-img alt="" src="img/transp.gif">
-									<div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
-										<span data-uk-icon="icon:heart; ratio: 0.8"></span> 12.345 <span data-uk-icon="icon:comment; ratio: 0.8"></span> 12.345
-									</div>
-								</div>
-								
-							</div>
-							<div class="uk-card-body">
-								<h6 class="uk-margin-small-bottom uk-margin-remove-adjacent uk-text-bold">WILDCATS IN THAILAND</h6>
-								<p class="uk-text-small uk-text-muted">Duis aute irure dolor in reprehenderit in voluptate velit</p>
-							</div>
-							<div class="uk-card-footer">
-								<div class="uk-grid uk-grid-small uk-grid-divider uk-flex uk-flex-middle" data-uk-grid>
-									<div class="uk-width-expand uk-text-small">
-										John Doe
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a href="#" data-uk-tooltip="title: Twitter" class="uk-icon-link" data-uk-icon="icon:twitter; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Instagram" class="uk-icon-link" data-uk-icon="icon:instagram; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Behance" class="uk-icon-link" data-uk-icon="icon:behance; ratio: 0.8"></a>
-										<a href="#" data-uk-tooltip="title: Pinterest" class="uk-icon-link" data-uk-icon="icon:pinterest; ratio: 0.8"></a>
-									</div>
-									<div class="uk-width-auto uk-text-right">
-										<a data-uk-tooltip="title: Drag this card" href="#" class="uk-icon-link drag-icon" data-uk-icon="icon:move; ratio: 1"></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /card -->
 					
 				</div>
 			</div>
 		</section>
 		<!--/CARDS WRAPPER-->
 		
-		
 		<!-- JS FILES -->
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit-icons.min.js"></script>
 		<script src="assets/js/cards.js"></script>
-		<script src="assets/js/script.js"></script>	
+		<script src="assets/js/script.js"></script>
+		<script src="https://unpkg.com/vue@next"></script>
 		<script>
-			/*setTimeout(function(){
-				UIkit.notification('¡Ahora el clan Warriors tiene página!<br>¡Puedes buscar las partidas grabadas y repetirlas las veces que quieras!');
-			}, 1000);*/
-		</script>	
+			const { createApp } = Vue;
+			const App = {
+				data() {
+					return {
+						partidas: {
+							1: {
+								'bloqueo_diplomacia_equipos': 'Bloqueado',
+								'dificultad': 'Muy fácil',
+								'diplomacia': 'Batalla de equipos',
+								'duracion_partida': '00:49:09',
+								'equipos': {
+									1: {
+										1: {
+											'civ': 'Persas',
+											'civ_cod': '8',
+											'color': 'Blue',
+											'color_cod': '0',
+											'nickname': '(WARRIORS) Frank',
+											'victoria': 0},
+										2: {'civ': 'Japoneses',
+											'civ_cod': '5',
+											'color': 'Red',
+											'color_cod': '1',
+											'nickname': '(WARRIORS) _MaesTro_De_MaEsTros',
+											'victoria': 0},
+										3: {'civ': 'Celtas',
+											'civ_cod': '13',
+											'color': 'Green',
+											'color_cod': '2',
+											'nickname': '(WaRRiORs)_AmigoFremer',
+											'victoria': 0},
+										4: {'civ': 'Vikingos',
+											'civ_cod': '11',
+											'color': 'Yellow',
+											'color_cod': '3',
+											'nickname': '(WARRIORS)Flame A',
+											'victoria': 0}},
+									2: {
+										5: {'civ': 'Francos',
+											'civ_cod': '2',
+											'color': 'Teal',
+											'color_cod': '4',
+											'nickname': 'Pro with new account',
+											'victoria': 1},
+										6: {'civ': 'Mayas',
+											'civ_cod': '16',
+											'color': 'Purple',
+											'color_cod': '5',
+											'nickname': 'I AM INDO',
+											'victoria': 1},
+										7: {'civ': 'Ingleses',
+											'civ_cod': '1',
+											'color': 'Gray',
+											'color_cod': '6',
+											'nickname': 'Hector',
+											'victoria': 1},
+										8: {'civ': 'Chinos',
+											'civ_cod': '6',
+											'color': 'Orange',
+											'color_cod': '7',
+											'nickname': 'Hiraishin\x99',
+											'victoria': 1
+										}
+									}
+								},
+								'mapa_revelado': 'Normal',
+								'nombre_archivo': 'recorded game -  06-mar-2021 04`17`02.mgx',
+								'nombre_mapa': 'Arabia',
+								'poblacion': 200,
+								'punto_de_vista': '(WaRRiORs)_AmigoFremer',
+								'tamano_mapa': 'Grande (8 jug.)',
+								'teams': '4v4',
+								'velocidad': 'Rápida'
+							}
+						}
+					};
+				},
+				mounted() {
+					this.mapa_info();
+				},
+				methods:{
+					mapa_info() {
+						console.log('working!');
+					}
+				},
+			};
+			createApp(App).mount("#app");
+		</script>
 	</body>
 </html>
